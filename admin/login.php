@@ -69,18 +69,20 @@ if(isset($_SESSION["admin_id"]))
 
 <script>
 $(document).ready(function(){
+  //Execute block of code when form data has been submitted.
   $('#admin_login_form').on('submit', function(event){
+    //Stop to submit form data to server.
     event.preventDefault();
     $.ajax({
       url:"check_admin_login.php",
       method:"POST",
-      data:$(this).serialize(),
-      dataType:"json",
-      beforeSend:function(){
+      data:$(this).serialize(),//Convert form data into URL encoded string.
+      dataType:"json",//Format how to receive data from server.
+      beforeSend:function(){//Call before sent to ajax.
         $('#admin_login').val('Validate...');
         $('#admin_login').attr('disabled', 'disabled');
       },
-      success:function(data)
+      success:function(data)//This fuction is called if request completed successfully.
       {
         if(data.success)
         {
