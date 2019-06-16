@@ -6,6 +6,7 @@ include('database_connection.php');
 
 session_start();
 
+// Redirect page to index.php if admin_id session is not logged in.
 if(isset($_SESSION["admin_id"]))
 {
   header('location:index.php');
